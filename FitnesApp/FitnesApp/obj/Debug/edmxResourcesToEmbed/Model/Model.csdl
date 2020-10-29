@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FitnesAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Registration_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CardtoPacketServices" Relationship="Self.FK__CardtoPac__Card___4316F928" FromRole="Card" ToRole="CardtoPacketService" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK_Card_Registration" FromRole="Card" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="CardtoPacketService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Card_Id" Type="Int32" />
+    <Property Name="Service_Id" Type="Int32" />
+    <Property Name="Packet_Id" Type="Int32" />
+    <NavigationProperty Name="Card" Relationship="Self.FK__CardtoPac__Card___4316F928" FromRole="CardtoPacketService" ToRole="Card" />
+    <NavigationProperty Name="Packet" Relationship="Self.FK__CardtoPac__Packe__44FF419A" FromRole="CardtoPacketService" ToRole="Packet" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__CardtoPac__Servi__440B1D61" FromRole="CardtoPacketService" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Id" Type="Int32" />
+    <Property Name="IncomeMonth" Type="DateTime" Precision="3" />
+    <Property Name="ClientIncomes" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Registration" Relationship="Self.FK__Income__Client_I__5070F446" FromRole="Income" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="Outcome">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cleaning_Tools" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Worker_salary" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OutcomeMonth" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Packet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Packet_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Packet_Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="CardtoPacketServices" Relationship="Self.FK__CardtoPac__Packe__44FF419A" FromRole="Packet" ToRole="CardtoPacketService" />
+    <NavigationProperty Name="ServicetoPackets" Relationship="Self.FK__Serviceto__Packe__48CFD27E" FromRole="Packet" ToRole="ServicetoPacket" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Client_Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cards" Relationship="Self.FK_Card_Registration" FromRole="Registration" ToRole="Card" />
+    <NavigationProperty Name="Incomes" Relationship="Self.FK__Income__Client_I__5070F446" FromRole="Registration" ToRole="Income" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__User__Role_Id__398D8EEE" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Service_Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="CardtoPacketServices" Relationship="Self.FK__CardtoPac__Servi__440B1D61" FromRole="Service" ToRole="CardtoPacketService" />
+    <NavigationProperty Name="ServicetoPackets" Relationship="Self.FK__Serviceto__Servi__47DBAE45" FromRole="Service" ToRole="ServicetoPacket" />
+  </EntityType>
+  <EntityType Name="ServicetoPacket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Id" Type="Int32" Nullable="false" />
+    <Property Name="Packet_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Packet" Relationship="Self.FK__Serviceto__Packe__48CFD27E" FromRole="ServicetoPacket" ToRole="Packet" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__Serviceto__Servi__47DBAE45" FromRole="ServicetoPacket" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__User__Role_Id__398D8EEE" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK__CardtoPac__Card___4316F928">
+    <End Role="Card" Type="Self.Card" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CardtoPacketService" Type="Self.CardtoPacketService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardtoPacketService">
+        <PropertyRef Name="Card_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Card_Registration">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="Registration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CardtoPac__Packe__44FF419A">
+    <End Role="Packet" Type="Self.Packet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CardtoPacketService" Type="Self.CardtoPacketService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardtoPacketService">
+        <PropertyRef Name="Packet_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CardtoPac__Servi__440B1D61">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CardtoPacketService" Type="Self.CardtoPacketService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CardtoPacketService">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Income__Client_I__5070F446">
+    <End Role="Registration" Type="Self.Registration" Multiplicity="0..1" />
+    <End Role="Income" Type="Self.Income" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Income">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Serviceto__Packe__48CFD27E">
+    <End Role="Packet" Type="Self.Packet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServicetoPacket" Type="Self.ServicetoPacket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicetoPacket">
+        <PropertyRef Name="Packet_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__Role_Id__398D8EEE">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Serviceto__Servi__47DBAE45">
+    <End Role="Service" Type="Self.Service" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServicetoPacket" Type="Self.ServicetoPacket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicetoPacket">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FitnesAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cards" EntityType="Self.Card" />
+    <EntitySet Name="CardtoPacketServices" EntityType="Self.CardtoPacketService" />
+    <EntitySet Name="Incomes" EntityType="Self.Income" />
+    <EntitySet Name="Outcomes" EntityType="Self.Outcome" />
+    <EntitySet Name="Packets" EntityType="Self.Packet" />
+    <EntitySet Name="Registrations" EntityType="Self.Registration" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <EntitySet Name="ServicetoPackets" EntityType="Self.ServicetoPacket" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__CardtoPac__Card___4316F928" Association="Self.FK__CardtoPac__Card___4316F928">
+      <End Role="Card" EntitySet="Cards" />
+      <End Role="CardtoPacketService" EntitySet="CardtoPacketServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Card_Registration" Association="Self.FK_Card_Registration">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="Card" EntitySet="Cards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CardtoPac__Packe__44FF419A" Association="Self.FK__CardtoPac__Packe__44FF419A">
+      <End Role="Packet" EntitySet="Packets" />
+      <End Role="CardtoPacketService" EntitySet="CardtoPacketServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CardtoPac__Servi__440B1D61" Association="Self.FK__CardtoPac__Servi__440B1D61">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="CardtoPacketService" EntitySet="CardtoPacketServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Income__Client_I__5070F446" Association="Self.FK__Income__Client_I__5070F446">
+      <End Role="Registration" EntitySet="Registrations" />
+      <End Role="Income" EntitySet="Incomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Serviceto__Packe__48CFD27E" Association="Self.FK__Serviceto__Packe__48CFD27E">
+      <End Role="Packet" EntitySet="Packets" />
+      <End Role="ServicetoPacket" EntitySet="ServicetoPackets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__Role_Id__398D8EEE" Association="Self.FK__User__Role_Id__398D8EEE">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Serviceto__Servi__47DBAE45" Association="Self.FK__Serviceto__Servi__47DBAE45">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServicetoPacket" EntitySet="ServicetoPackets" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ec3b92d5cc1d419b800a55aac0c0bf35" Name="Diagram1">
+        <EntityTypeShape EntityType="FitnesAppModel.Card" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.CardtoPacketService" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.Income" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.Outcome" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.Packet" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.Registration" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.Role" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.Service" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.ServicetoPacket" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnesAppModel.User" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="FitnesAppModel.FK__CardtoPac__Card___4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesAppModel.FK_Card_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesAppModel.FK__CardtoPac__Packe__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesAppModel.FK__CardtoPac__Servi__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesAppModel.FK__Income__Client_I__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesAppModel.FK__Serviceto__Packe__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesAppModel.FK__User__Role_Id__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnesAppModel.FK__Serviceto__Servi__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

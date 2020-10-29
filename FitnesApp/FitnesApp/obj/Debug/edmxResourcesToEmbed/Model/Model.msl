@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FitnesAppModelStoreContainer" CdmEntityContainer="FitnesAppEntities">
+    <EntitySetMapping Name="Cards">
+      <EntityTypeMapping TypeName="FitnesAppModel.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Registration_Id" ColumnName="Registration Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardtoPacketServices">
+      <EntityTypeMapping TypeName="FitnesAppModel.CardtoPacketService">
+        <MappingFragment StoreEntitySet="CardtoPacketService">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Card_Id" ColumnName="Card Id" />
+          <ScalarProperty Name="Service_Id" ColumnName="Service Id" />
+          <ScalarProperty Name="Packet_Id" ColumnName="Packet Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incomes">
+      <EntityTypeMapping TypeName="FitnesAppModel.Income">
+        <MappingFragment StoreEntitySet="Income">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Client_Id" ColumnName="Client Id" />
+          <ScalarProperty Name="IncomeMonth" ColumnName="IncomeMonth" />
+          <ScalarProperty Name="ClientIncomes" ColumnName="ClientIncomes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Outcomes">
+      <EntityTypeMapping TypeName="FitnesAppModel.Outcome">
+        <MappingFragment StoreEntitySet="Outcome">
+          <ScalarProperty Name="OutcomeMonth" ColumnName="OutcomeMonth" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cleaning_Tools" ColumnName="Cleaning Tools" />
+          <ScalarProperty Name="Worker_salary" ColumnName="Worker salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packets">
+      <EntityTypeMapping TypeName="FitnesAppModel.Packet">
+        <MappingFragment StoreEntitySet="Packet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Packet_Name" ColumnName="Packet Name" />
+          <ScalarProperty Name="Packet_Price" ColumnName="Packet Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registrations">
+      <EntityTypeMapping TypeName="FitnesAppModel.Registration">
+        <MappingFragment StoreEntitySet="Registration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Client_Name" ColumnName="Client Name" />
+          <ScalarProperty Name="Client_Surname" ColumnName="Client Surname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="FitnesAppModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="FitnesAppModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Service_Name" ColumnName="Service Name" />
+          <ScalarProperty Name="Service_Price" ColumnName="Service Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicetoPackets">
+      <EntityTypeMapping TypeName="FitnesAppModel.ServicetoPacket">
+        <MappingFragment StoreEntitySet="ServicetoPacket">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Service_Id" ColumnName="Service Id" />
+          <ScalarProperty Name="Packet_Id" ColumnName="Packet Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FitnesAppModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
